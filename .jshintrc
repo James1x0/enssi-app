@@ -2,7 +2,8 @@
   "predef": {
     "document": true,
     "window": true,
-    "EnssiAppENV": true
+    "EnssiAppENV": true,
+    "io": true
   },
   "browser" : true,
   "boss" : true,
