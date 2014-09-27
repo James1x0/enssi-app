@@ -3,6 +3,8 @@ import Ember from 'ember';
 export default Ember.View.extend({
   tagName: 'button',
 
+  classNames: [ 'btn', 'btn-default' ],
+
   mouseUp: function () {
     if( this.get('noStop') === true ) {
       return;

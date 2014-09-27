@@ -9,13 +9,13 @@ export default Ember.Object.extend({
   connection: null,
 
   connect: function ( callback ) {
-    var socket = io.connect('http://localhost:3000');
+    var socket = io.connect('192.168.2.10:3000');
 
     this.set('connection', socket);
 
     var self = this;
 
-    socket.on('connect', function ( data ) {
+    socket.on('connect', function ( /* data */ ) {
       self.set('connected', true);
 
       console.debug("Socket Connected");
@@ -24,6 +24,19 @@ export default Ember.Object.extend({
         callback();
       }
     });
+
+    var updateUsers = this._updateUsers.bind( this );
+
+    socket.on('users-update', updateUsers);
+
+    socket.on('error', function (err) {
+      console.error(err);
+      throw err;
+    });
+  },
+
+  _updateUsers: function ( data ) {
+    this.set('users', data);
   }
 
 });

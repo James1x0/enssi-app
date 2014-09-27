@@ -1,0 +1,27 @@
+<hgroup class="text-center">
+  <h1>
+    Hello. We need a username to sign you in.
+  </h1>
+  <h3>
+    <small>
+      We've pre-generated one for you in case you aren't creative, feel free to giggle...
+    </small>
+  </h3>
+</hgroup>
+
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <hr />
+    <form {{action "submitUsername" on="submit"}}>
+      <div class="form-group">
+        <label>What can we call you?</label>
+        {{input type="text" class="form-control" value=username placeholder="ex. RobotSkipper24"}}
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-success btn-block btn-lg" {{bind-attr disabled=notAllowSubmit}}>Control da bot</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-4"></div>
+</div>
