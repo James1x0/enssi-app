@@ -3,33 +3,49 @@
 
 <div class="row">
   <div class="col-md-8">
-    {{#view "bot-control" eventType="move" eventDirection="FWD"}}
-      FWD
-    {{/view}}
+    <h3>
+      Current Controller is {{socket.currentUser.name}} and next controller is {{socket.nextUser.name}}<br />
+      <small>
+        {{#if socket.isCurrentUser}}
+          You are controlling the enssi bot!
+        {{else}}
+          You are in queue.
+        {{/if}}
+        {{#if socket.isNextUser}}
+          You are the next user in queue!
+        {{/if}}
+      </small>
+    </h3>
 
-    {{#view "bot-control" eventType="move" eventDirection="BWD"}}
-      BWD
-    {{/view}}
+    {{#if socket.isCurrentUser}}
+      {{#view "bot-control" eventType="move" eventDirection="FWD"}}
+        FWD
+      {{/view}}
 
-    {{#view "bot-control" eventType="shoot"}}
-      PEWPEW
-    {{/view}}
+      {{#view "bot-control" eventType="move" eventDirection="BWD"}}
+        BWD
+      {{/view}}
 
-    {{#view "bot-control" eventType="turn" eventDirection="left"}}
-      Turn Left
-    {{/view}}
+      {{#view "bot-control" eventType="shoot"}}
+        PEWPEW
+      {{/view}}
 
-    {{#view "bot-control" eventType="turn" eventDirection="right"}}
-      Turn Right
-    {{/view}}
+      {{#view "bot-control" eventType="turn" eventDirection="left"}}
+        Turn Left
+      {{/view}}
 
-    {{#view "bot-control" eventType="turnPrecise" eventDirection="left" eventDegrees=360 noStop=true}}
-      360 Left
-    {{/view}}
+      {{#view "bot-control" eventType="turn" eventDirection="right"}}
+        Turn Right
+      {{/view}}
 
-    {{#view "bot-control" eventType="turnPrecise" eventDirection="right" eventDegrees=360 noStop=true}}
-      360 Right
-    {{/view}}
+      {{#view "bot-control" eventType="turnPrecise" eventDirection="left" eventDegrees=360 noStop=true}}
+        360 Left
+      {{/view}}
+
+      {{#view "bot-control" eventType="turnPrecise" eventDirection="right" eventDegrees=360 noStop=true}}
+        360 Right
+      {{/view}}
+    {{/if}}
   </div>
   <div class="col-md-4">
     <h3>Connected Users</h3>

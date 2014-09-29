@@ -3,7 +3,8 @@
     "document": true,
     "window": true,
     "EnssiAppENV": true,
-    "io": true
+    "io": true,
+    "$": true
   },
   "browser" : true,
   "boss" : true,

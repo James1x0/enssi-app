@@ -3,13 +3,14 @@
 */
 
 import Ember from 'ember';
+import growlMixin from '../mixins/growl';
 
-export default Ember.Object.extend({
+export default Ember.Object.extend(growlMixin, {
   connected: false,
   connection: null,
 
   connect: function ( callback ) {
-    var socket = io.connect('192.168.2.10:3000');
+    var socket = io.connect('localhost:3000');
 
     this.set('connection', socket);
 
@@ -17,6 +18,8 @@ export default Ember.Object.extend({
 
     socket.on('connect', function ( /* data */ ) {
       self.set('connected', true);
+
+      self.growl('success', 'Connection Success', 'Successfully connected to socket server.', 3000, 'fa fa-plug');
 
       console.debug("Socket Connected");
 
@@ -29,9 +32,22 @@ export default Ember.Object.extend({
     socket.on('username-taken', this._usernameTaken.bind( this ));
     socket.on('queue-update',   this._updateQueue.bind( this ));
 
-    socket.on('error', function (err) {
+    socket.on('connect_timeout', function ( err ) {
+      self.growl('danger', 'Socket Timeout', 'Socket connection timed out.');
       console.error(err);
-      throw err;
+      callback();
+    });
+
+    socket.on('connect_error', function ( err ) {
+      self.growl('danger', 'Socket Error', err);
+      console.error( err );
+      callback();
+    });
+
+    socket.on('error', function ( err ) {
+      self.growl('danger', 'Socket Error', err);
+      console.error( err );
+      callback();
     });
   },
 

@@ -13,6 +13,9 @@
     "ember-qunit-notifications": "^0.0.3",
     "ember-cli-test-loader": "rjackson/ember-cli-test-loader#0.0.2",
     "socket.io-client": "~1.0.6",
-    "bootstrap": "~3.2.0"
+    "bootstrap": "~3.2.0",
+    "font-awesome": "~4.2.0",
+    "bootstrap.growl": "~2.0.1",
+    "animate.css": "~3.2.0"
   }
 }
