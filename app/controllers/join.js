@@ -25,11 +25,13 @@ export default Ember.Controller.extend({
 
   actions: {
     submitUsername: function () {
+      this.set('loginError', null);
+
       var username = this.get('username');
 
       this.socket.connection.emit('username', username);
 
-      this.socket.username = username;
+      this.socket.set('username', username);
 
       if( this.get('previousTransition') ) {
         this.get('previousTransition').retry();

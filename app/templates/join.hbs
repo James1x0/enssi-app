@@ -18,6 +18,9 @@
         <label>What can we call you?</label>
         {{input type="text" class="form-control" value=username placeholder="ex. RobotSkipper24"}}
       </div>
+      {{#if loginError}}
+        <p class="text-center text-danger">{{loginError}}</p>
+      {{/if}}
       <div class="form-group">
         <button type="submit" class="btn btn-success btn-block btn-lg" {{bind-attr disabled=notAllowSubmit}}>Control da bot</button>
       </div>
