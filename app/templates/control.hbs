@@ -18,33 +18,7 @@
     </h3>
 
     {{#if socket.isCurrentUser}}
-      {{#view "bot-control" eventType="move" eventDirection="FWD"}}
-        FWD
-      {{/view}}
-
-      {{#view "bot-control" eventType="move" eventDirection="BWD"}}
-        BWD
-      {{/view}}
-
-      {{#view "bot-control" eventType="shoot"}}
-        PEWPEW
-      {{/view}}
-
-      {{#view "bot-control" eventType="turn" eventDirection="left"}}
-        Turn Left
-      {{/view}}
-
-      {{#view "bot-control" eventType="turn" eventDirection="right"}}
-        Turn Right
-      {{/view}}
-
-      {{#view "bot-control" eventType="turnPrecise" eventDirection="left" eventDegrees=360 noStop=true}}
-        360 Left
-      {{/view}}
-
-      {{#view "bot-control" eventType="turnPrecise" eventDirection="right" eventDegrees=360 noStop=true}}
-        360 Right
-      {{/view}}
+      {{render "controls"}}
     {{/if}}
   </div>
   <div class="col-md-4">
@@ -59,3 +33,10 @@
     </ul>
   </div>
 </div>
+
+<hr />
+{{log socket.messages}}
+{{#each msg in socket.messages}}
+  {{msg}}<br />
+{{/each}}
+<hr />

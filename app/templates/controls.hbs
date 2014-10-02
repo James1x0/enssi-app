@@ -1,0 +1,54 @@
+<div class="control-row text-center">
+  {{#view "bot-control" eventType="move" eventDirection="FWD" ratio="0.5" title="Foward/Left" speed=speed}}
+    &nwarr;
+  {{/view}}
+
+  {{#view "bot-control" eventType="move" eventDirection="FWD" title="Forward" speed=speed}}
+    &uarr;
+  {{/view}}
+
+  {{#view "bot-control" eventType="move" eventDirection="FWD" ratio="-0.5" title="Forward/Right" speed=speed}}
+    &nearr;
+  {{/view}}
+</div>
+
+<div class="control-row text-center">
+  {{#view "bot-control" eventType="turnPrecise" eventDirection="left" eventDegrees=360 noStop=true title="360 Left" speed=speed}}
+    &#10560;
+  {{/view}}
+
+  {{#view "bot-control" eventType="turn" eventDirection="left" title="Rotate Left" speed=speed}}
+    &#10226;
+  {{/view}}
+
+  {{#view "bot-control" eventType="shoot" title="Shoot Ball"}}
+    <i class="fa fa-bullseye"></i>
+  {{/view}}
+
+  {{#view "bot-control" eventType="turn" eventDirection="right" title="Rotate Right" speed=speed}}
+    &#10227;
+  {{/view}}
+
+  {{#view "bot-control" eventType="turnPrecise" eventDirection="right" eventDegrees=360 noStop=true title="360 Right" speed=speed}}
+    &#10561;
+  {{/view}}
+</div>
+
+<div class="control-row text-center">
+  {{#view "bot-control" eventType="move" eventDirection="BWD" ratio="0.5" title="Backward/Left" speed=speed}}
+    &LowerLeftArrow;
+  {{/view}}
+
+  {{#view "bot-control" eventType="move" eventDirection="BWD" title="Backward" speed=speed}}
+    &darr;
+  {{/view}}
+
+  {{#view "bot-control" eventType="move" eventDirection="BWD" ratio="-0.5" title="Backward/Right" speed=speed}}
+    &LowerRightArrow;
+  {{/view}}
+</div>
+
+<div class="control-row text-center control-range">
+  {{view "range-slider" min=1 max=100 value=speed step=1}}
+  Bot Speed: {{speed}}%
+</div>

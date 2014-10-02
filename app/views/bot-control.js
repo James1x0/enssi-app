@@ -2,8 +2,10 @@ import Ember from 'ember';
 
 export default Ember.View.extend({
   tagName: 'button',
-
   classNames: [ 'btn', 'btn-default' ],
+  attributeBindings: [ 'title' ],
+
+  speed: 100,
 
   mouseUp: function () {
     if( this.get('noStop') === true ) {
@@ -18,15 +20,23 @@ export default Ember.View.extend({
       eventType: this.get('eventType')
     };
 
-    var dir = this.get('eventDirection'),
-        deg = this.get('eventDegrees');
+    var dir   = this.get('eventDirection'),
+        deg   = this.get('eventDegrees'),
+        spd   = this.get('speed'),
+        ratio = this.get('ratio');
+
+    ev.speed = spd || 100;
 
     if( dir ) {
       ev.eventDirection = dir;
     }
 
     if( deg ) {
-      ev.eventDegrees   = deg;
+      ev.eventDegrees = deg;
+    }
+
+    if( ratio ) {
+      ev.ratio = parseFloat( ratio );
     }
 
     this.socket.connection.emit('bot-start', ev);

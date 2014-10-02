@@ -20,8 +20,8 @@ export default Ember.Controller.extend({
   allowSubmit: function () {
     var u = this.get('username');
 
-    return ( u && u.length > 1 );
-  }.property('username'),
+    return ( u && u.length > 1 && this.socket.get('connected') );
+  }.property('username', 'socket.connected'),
 
   actions: {
     submitUsername: function () {

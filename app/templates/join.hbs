@@ -21,6 +21,9 @@
       {{#if loginError}}
         <p class="text-center text-danger">{{loginError}}</p>
       {{/if}}
+      {{#unless socket.connected}}
+        <p class="text-center text-danger">It looks like you aren't connected to the bot server...</p>
+      {{/unless}}
       <div class="form-group">
         <button type="submit" class="btn btn-success btn-block btn-lg" {{bind-attr disabled=notAllowSubmit}}>Control da bot</button>
       </div>
