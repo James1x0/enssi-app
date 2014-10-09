@@ -6,12 +6,14 @@ import Ember from 'ember';
 import growlMixin from '../mixins/growl';
 
 export default Ember.Object.extend(growlMixin, {
+  needs: ['join'],
   connected: false,
+  connectedWithUsername: false,
   connection: null,
   messages: Ember.A(),
 
   connect: function ( callback ) {
-    var socket = io.connect('192.168.2.10:3000');
+    var socket = io.connect('192.168.2.9:3000');
 
     this.set('connection', socket);
 
@@ -33,6 +35,9 @@ export default Ember.Object.extend(growlMixin, {
     socket.on('username-taken', this._usernameTaken.bind( this ));
     socket.on('queue-update',   this._updateQueue.bind( this ));
     socket.on('new-message',    this._newMessage.bind( this ));
+    socket.on('username-success', function ( data ) {
+      self.set('connectedWithUsername', true);
+    });
 
     socket.on('connect_timeout', function ( err ) {
       self.growl('danger', 'Socket Timeout', 'Socket connection timed out.');
@@ -56,6 +61,7 @@ export default Ember.Object.extend(growlMixin, {
       console.log('disconnected');
       self.setProperties({
         username: null,
+        connectedWithUsername: false,
         connected: false
       });
     });
@@ -73,8 +79,7 @@ export default Ember.Object.extend(growlMixin, {
   },
 
   _usernameTaken: function () {
-    this.controllerFor('join').set('loginError', 'Username is already in use.');
-    this.transitionToRoute('join');
+    this.set('loginError', 'Username or IP is already in use.');
   },
 
   _newMessage: function ( data ) {

@@ -18,8 +18,8 @@
         <label>What can we call you?</label>
         {{input type="text" class="form-control" value=username placeholder="ex. RobotSkipper24"}}
       </div>
-      {{#if loginError}}
-        <p class="text-center text-danger">{{loginError}}</p>
+      {{#if socket.loginError}}
+        <p class="text-center text-danger">{{socket.loginError}}</p>
       {{/if}}
       {{#unless socket.connected}}
         <p class="text-center text-danger">It looks like you aren't connected to the bot server...</p>

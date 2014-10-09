@@ -17,6 +17,22 @@ export default Ember.Controller.extend({
     this.set('username', username);
   },
 
+  loginError: function () {
+    return this.socket.get('loginError');
+  }.property('socket.loginError'),
+
+  connectedWithUser: function () {
+    var socket = this.socket;
+
+    if( socket.get('connected') && socket.get('connectedWithUsername') ) {
+      if( this.get('previousTransition') ) {
+        this.get('previousTransition').retry();
+      } else {
+        this.transitionToRoute('control');
+      }
+    }
+  }.observes('socket.connected', 'socket.connectedWithUsername'),
+
   allowSubmit: function () {
     var u = this.get('username');
 
@@ -29,15 +45,11 @@ export default Ember.Controller.extend({
 
       var username = this.get('username');
 
+      this.socket.set('loginError', null);
+
       this.socket.connection.emit('username', username);
 
       this.socket.set('username', username);
-
-      if( this.get('previousTransition') ) {
-        this.get('previousTransition').retry();
-      } else {
-        this.transitionToRoute('control');
-      }
     }
   }
 });
