@@ -1,49 +1,49 @@
 <div class="control-row text-center">
-  {{#view "bot-control" eventType="move" eventDirection="FWD" ratio="0.2" title="Foward/Left" speed=speed}}
+  {{#view "bot-control" eventType="move" eventDirection="FWD" ratio="0.2" title="Foward/Left" speed=speed disabled=dance}}
     &nwarr;
   {{/view}}
 
-  {{#view "bot-control" eventType="move" eventDirection="FWD" title="Forward" speed=speed}}
+  {{#view "bot-control" eventType="move" eventDirection="FWD" title="Forward" speed=speed disabled=dance}}
     &uarr;
   {{/view}}
 
-  {{#view "bot-control" eventType="move" eventDirection="FWD" ratio="-0.2" title="Forward/Right" speed=speed}}
+  {{#view "bot-control" eventType="move" eventDirection="FWD" ratio="-0.2" title="Forward/Right" speed=speed disabled=dance}}
     &nearr;
   {{/view}}
 </div>
 
 <div class="control-row text-center">
-  {{#view "bot-control" eventType="turnPrecise" eventDirection="left" eventDegrees=360 noStop=true title="360 Left" speed=speed}}
+  {{#view "bot-control" eventType="turnPrecise" eventDirection="left" eventDegrees=360 noStop=true title="360 Left" speed=speed disabled=dance}}
     &#10560;
   {{/view}}
 
-  {{#view "bot-control" eventType="turn" eventDirection="left" title="Rotate Left" speed=speed}}
+  {{#view "bot-control" eventType="turn" eventDirection="left" title="Rotate Left" speed=speed disabled=dance}}
     &#10226;
   {{/view}}
 
-  {{#view "bot-control" eventType="shoot" title="Shoot Ball"}}
+  {{#view "bot-control" eventType="shoot" title="Shoot Ball" disabled=dance}}
     <i class="fa fa-bullseye"></i>
   {{/view}}
 
-  {{#view "bot-control" eventType="turn" eventDirection="right" title="Rotate Right" speed=speed}}
+  {{#view "bot-control" eventType="turn" eventDirection="right" title="Rotate Right" speed=speed disabled=dance}}
     &#10227;
   {{/view}}
 
-  {{#view "bot-control" eventType="turnPrecise" eventDirection="right" eventDegrees=360 noStop=true title="360 Right" speed=speed}}
+  {{#view "bot-control" eventType="turnPrecise" eventDirection="right" eventDegrees=360 noStop=true title="360 Right" speed=speed disabled=dance}}
     &#10561;
   {{/view}}
 </div>
 
 <div class="control-row text-center">
-  {{#view "bot-control" eventType="move" eventDirection="BWD" ratio="0.2" title="Backward/Left" speed=speed}}
+  {{#view "bot-control" eventType="move" eventDirection="BWD" ratio="0.2" title="Backward/Left" speed=speed disabled=dance}}
     &LowerLeftArrow;
   {{/view}}
 
-  {{#view "bot-control" eventType="move" eventDirection="BWD" title="Backward" speed=speed}}
+  {{#view "bot-control" eventType="move" eventDirection="BWD" title="Backward" speed=speed disabled=dance}}
     &darr;
   {{/view}}
 
-  {{#view "bot-control" eventType="move" eventDirection="BWD" ratio="-0.2" title="Backward/Right" speed=speed}}
+  {{#view "bot-control" eventType="move" eventDirection="BWD" ratio="-0.2" title="Backward/Right" speed=speed disabled=dance}}
     &LowerRightArrow;
   {{/view}}
 </div>
@@ -51,4 +51,10 @@
 <div class="control-row text-center control-range">
   {{view "range-slider" min=1 max=100 value=speed step=1}}
   Bot Speed: {{speed}}%
+</div>
+
+<div class="control-row text-center">
+  <h4>Dance</h4>
+  {{input type="checkbox" class="tgl tgl-light" id="dance" checked=dance}}
+  <label class="tgl-btn" for="dance"></label>
 </div>

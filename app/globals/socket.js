@@ -35,7 +35,7 @@ export default Ember.Object.extend(growlMixin, {
     socket.on('username-taken', this._usernameTaken.bind( this ));
     socket.on('queue-update',   this._updateQueue.bind( this ));
     socket.on('new-message',    this._newMessage.bind( this ));
-    socket.on('username-success', function ( data ) {
+    socket.on('username-success', function () {
       self.set('connectedWithUsername', true);
     });
 

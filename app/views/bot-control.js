@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.View.extend({
   tagName: 'button',
   classNames: [ 'btn', 'btn-default' ],
-  attributeBindings: [ 'title' ],
+  attributeBindings: [ 'title', 'disabled' ],
 
   speed: 100,
 
