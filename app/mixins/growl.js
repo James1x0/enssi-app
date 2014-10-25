@@ -20,5 +20,5 @@ export default Ember.Mixin.create({
         align: 'center'
       }
     });
-  },
+  }
 });

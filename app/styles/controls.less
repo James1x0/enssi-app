@@ -2,6 +2,10 @@
   Control Styles
 */
 
+.control-view {
+  padding: 0 10px;
+}
+
 .control-row {
   margin: 5px;
 
@@ -71,6 +75,23 @@
   &:checked{
     & + .tgl-btn{
       background: #9FD6AE;
+    }
+  }
+}
+
+ul.messages {
+  margin: 0;
+  padding: 10px;
+  max-height: 200px;
+  overflow: auto;
+
+  li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    &:nth-child(even) {
+      background-color: rgba( 0, 0, 0, 0.1 );
     }
   }
 }

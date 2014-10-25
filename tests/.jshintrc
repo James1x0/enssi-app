@@ -44,7 +44,8 @@
     "currentURL",
     "currentPath",
     "currentRouteName",
-    "io"
+    "io",
+    "moment"
   ],
   "node": false,
   "browser": false,

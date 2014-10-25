@@ -35,8 +35,13 @@
 </div>
 
 <hr />
-{{log socket.messages}}
-{{#each msg in socket.messages}}
-  {{msg}}<br />
-{{/each}}
+<h4><i class="fa fa-bullhorn"></i> Messages <span class="label label-danger">{{count-array socket.messages}}</span></h4>
+<ul class="messages scroll-box">
+  {{#each msg in socket.messages}}
+    <li>
+      <strong>{{title-case msg.type}}Event :: </strong>
+      {{msg.text}} @ {{time-ago msg.time}}<br />
+    </li>
+  {{/each}}
+</ul>
 <hr />

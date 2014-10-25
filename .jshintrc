@@ -4,7 +4,8 @@
     "window": true,
     "EnssiAppENV": true,
     "io": true,
-    "$": true
+    "$": true,
+    "moment": true
   },
   "browser" : true,
   "boss" : true,

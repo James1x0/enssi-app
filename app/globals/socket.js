@@ -6,14 +6,14 @@ import Ember from 'ember';
 import growlMixin from '../mixins/growl';
 
 export default Ember.Object.extend(growlMixin, {
-  needs: ['join'],
-  connected: false,
+  needs:                 [ 'join' ],
+  connected:             false,
   connectedWithUsername: false,
-  connection: null,
-  messages: Ember.A(),
+  connection:            null,
+  messages:              Ember.A(),
 
   connect: function ( callback ) {
-    var socket = io.connect('192.168.2.9:3000');
+    var socket = io.connect('192.168.0.75:3000');
 
     this.set('connection', socket);
 
@@ -83,7 +83,7 @@ export default Ember.Object.extend(growlMixin, {
   },
 
   _newMessage: function ( data ) {
-    this.get('messages').pushObject( data );
+    this.get('messages').addObject( data );
   },
 
   isCurrentUser: function () {

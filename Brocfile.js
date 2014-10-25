@@ -11,5 +11,6 @@ app.import('bower_components/animate.css/animate.css');
 // Vendor JS
 app.import('bower_components/socket.io-client/socket.io.js');
 app.import('bower_components/bootstrap.growl/bootstrap-growl.js');
+app.import('bower_components/moment/moment.js');
 
 module.exports = app.toTree();
